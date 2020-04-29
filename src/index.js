@@ -1,0 +1,33 @@
+import { useEffect } from 'react';
+
+/**
+ * React polling hook to poll any function
+ * 
+ * @param {function} func - the callback function to poll
+ * @param {any[]} deps - the dependencies of the polling
+ * @param {Object} config - polling configuration
+ * @param {number} [config.interval=5000] - the time (in ms) between polls
+ */
+export default function usePoll(func, deps, config = {}) {
+  if (typeof func !== 'function') throw new TypeError('Can\'t poll without a callback function');
+
+  const {
+    interval = 5000,
+  } = config;
+
+  return useEffect(() => {
+    let killed = false;
+
+    async function poll() {
+      if (killed) return;
+      await func();
+      setTimeout(poll, interval);
+    }
+
+    poll();
+
+    return () => {
+      killed = true;
+    }
+  }, deps);
+}
