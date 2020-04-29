@@ -9,7 +9,7 @@ react-use-poll is a package designed to simplify polling in functional react com
 
 ## Installation
 
-Add to your project using `npm i -D react-use-poll`
+Add to your project using `npm i -S react-use-poll`
 
 ## How to use
 
