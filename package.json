@@ -47,7 +47,7 @@
     "react-test-renderer": "^16.9.0",
     "rollup": "^2.7.3",
     "rollup-plugin-babel": "^4.4.0",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "use-multi-possibility": "^1.0.5"
   },
   "peerDependencies": {
