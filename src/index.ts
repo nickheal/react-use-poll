@@ -1,4 +1,8 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+
+type Config = {
+  interval?: number;
+}
 
 /**
  * React polling hook to poll any function
@@ -8,7 +12,7 @@ import { useEffect } from 'react';
  * @param {Object} config - polling configuration
  * @param {number} [config.interval=5000] - the time (in ms) between polls
  */
-export default function usePoll(func, deps, config = {}) {
+export default function usePoll(func: React.EffectCallback, deps: React.DependencyList | undefined = undefined, config: Config = {}): void {
   if (typeof func !== 'function') throw new TypeError('Can\'t poll without a callback function');
 
   const {

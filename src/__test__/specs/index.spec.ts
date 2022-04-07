@@ -1,15 +1,15 @@
 import { renderHook } from '@testing-library/react-hooks';
 import useMultiPossibility from 'use-multi-possibility';
-import usePoll from '../../src/index';
+import usePoll from '../../index';
 
 const flushPromises = () => new Promise(setImmediate);
 
 describe('usePoll', () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    jest.useFakeTimers('legacy');
   });
 
-  useMultiPossibility(([arg]) => {
+  useMultiPossibility(([arg]: any[]) => {
     it(`should throw an error if no function callback is provided (${JSON.stringify(arg)})`, () => {
       expect(() => usePoll(arg)).toThrowError(TypeError);
     });
